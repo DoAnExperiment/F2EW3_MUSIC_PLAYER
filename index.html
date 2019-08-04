@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zn-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Music Player</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700|Noto+Sans:400,700&display=swap&subset=chinese-traditional" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>  
+  <div class="container">
+    
+    <div class="player">
+      <audio class="audio" src="audio/Cheating_Juarez.mp3" type="audio/mpeg">
+        <p>你的瀏覽器不支持 HTML5 音頻</p>
+      </audio>
+
+      <div class="coverAndControls wrap">
+        <div class="album-cover">
+          <div class="cir"></div>
+        </div>        
+        <div class="controls skipAndRandom">
+          <div class="group-column">
+            <button data-skip="1" class="player-button skip next">
+              <img src="images/btn_next.svg" alt="撥放下一首歌的按鈕">
+            </button>            
+            <button data-skip="-1" class="player-button skip previous">
+              <img src="images/btn_previous.svg" alt="撥放上一首歌的按鈕">
+            </button>
+          </div>
+          <div class="group-column">
+            <button class="player-button random">
+                <img src="images/btn_random.svg" alt="隨機撥放按鈕">
+            </button>
+          </div>  
+        </div>
+      </div>
+
+      <div class="infoAndVolume wrap">
+        <div class="album-info">
+          <div class="album-title">Cheating Juarez</div>
+          <div class="singer">John Deley</div>
+        </div>
+        <div class="group">
+         <input type="range" name="volume" class="player-slider" min="0" max="1" step="0.05" value="0.8">
+         <img src="images/volume.svg" alt="調整聲量"> 
+        </div>             
+      </div>
+
+      <button class="toggle-button" title="Toggle Play"></button>
+      <div class="needle"></div>       
+
+      <div class="controls">
+        <span class="currentTime">1:00</span>
+        <div class="progress">
+          <div class="progress-filled"></div>
+        </div>
+        <span class="duration">3:22</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="play-list">
+    <ol>
+    <li>Cheating Juarez</li>
+    <li>If I Had a Chicken</li>
+    <li>Keep Moving On</li>
+    <li>Slowly Until We Get There</li>
+    <li>Station 22</li>
+  </ol> -->
+  </div>
+  <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+$primary-color: #FF8C6E;
+$shadow-color: #C5C5C5;
+
+@mixin size($w, $h:$w) {
+  width: $w;
+  height: $h;
+}
+
+%button {
+  @include size(59.53px);
+  border: 3px solid black;
+  border-radius:50%;
+  background-color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+%flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+* {
+  // border: 1px solid #000; 
+  font-family: 'Noto Sans TC','Noto Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: $primary-color;
+  width: 100vw;
+  // height: 100vh;
+  padding: 0; 
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.player {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 732px;
+  max-height: 732px;
+  border: 3px solid #000;
+  background-color: white;
+  margin-top: 28px;
+  padding: 39px 44px 0 34px;
+  .coverAndControls{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    .group-column {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .album-cover {
+    @include size(500px);
+    position: relative;
+    border: 3px solid #000;
+    border-radius: 50%;
+    background: url(../images/cover@2x.jpg) center/cover;
+    box-shadow: 0 3px 6px rgba(black, 0.16); 
+    margin: 0 1.1rem 3rem 2.5rem;
+    >.cir {
+      @include size(19%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 3px solid #000;
+      border-radius: 50%; 
+    }  
+  } 
+  .skipAndRandom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+  }
+  .player-button {
+    position: relative;
+    @extend %button;
+    z-index: 2;
+    >img {
+      width: 55%;  
+    }
+    &.next {
+      margin-bottom: 0.8rem;
+    }
+    &.random {
+      // background-color: rgba(black, 0.16);
+    }
+    &.random img {
+      width: 80%;
+    }
+    // &::before {
+    //   content: "";
+    //   width: 100%;
+    //   height: 100%;
+    //   position: absolute;
+    //   left: 3px;
+    //   top: 5px;
+    //   background-color: #C5C5C5;
+    //   border: 3px solid #000;
+    //   border-radius: 50%; 
+    //   z-index: 1;
+    // }
+  }
+  .infoAndVolume {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    .album-info {
+      display: flex;    
+      flex-direction: column;
+    }
+    .album-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+    .singer {
+      font-size: 1rem;
+    }
+    .group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      >img {
+        @include size(20.73px, 16.43px)
+      }
+    }
+    input[type="range"] {
+      width: 163.51px;
+      height: 9px;
+      margin-right: 12.26px;
+      appearance: none;
+      outline: none;
+      border: 3px solid #000;
+      border-radius: 75px;
+    }
+  }
+  .toggle-button{
+    position: absolute;
+    @extend %button;
+    @include size(92px);
+    background-image: url(../images/btn_play.svg);
+    background-size: 29px 32.2px;
+    background-position: center;
+    background-repeat: no-repeat;  
+    top: 560px;
+    left: 50%;
+    transform: translateX(-60%);
+    z-index: 3;
+    // pointer-events: none;
+    // &::before{
+    //   content: "";
+    //   position: absolute;
+    //   width: 100%;
+    //   height: 100%;
+    //   border: 3px solid #000;
+    //   border-radius: 50%;
+    //   background-color: $shadow-color;
+    //   top: 5px;
+    //   left: 3px;
+    //   z-index: -1;
+    // }
+  }
+  .needle {
+    position: absolute;
+    @include size(297px, 426px);
+    background-image: url(../images/needle_play.svg);
+    background-repeat: no-repeat;
+    background-size: 384px 450px; 
+    // transform-origin: 245px 363px;  
+    top: 17.3rem;
+    left: 2rem;
+    background-color: transparent; 
+    // transition: all 1s;
+    pointer-events: none;
+    z-index: 2;
+  }   
+  >.controls {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 27px;
+    .progress {
+      @include size(538px, 9px);
+      display: flex;
+      border: 3px solid #000;
+      border-radius: 75px;
+    }
+    .progress-filled {
+      position: relative;
+      flex-basis: 30%;
+      background-color: #C5C5C5;
+      &::before {       
+        content: "";
+        @include size(10px, 20px);
+        background: white;
+        border: 3px solid #000;
+        border-radius: 2px;
+        position: absolute;
+        right: -16px;
+        transform: translateY(-50%);
+        z-index: 10;
+      }
+    }    
+    .currentTime,.duration {
+      font-size: 1rem;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+    .currentTime {
+      margin-right: 1rem;
+    }
+    .duration {
+      margin-left: 0.5em;
+    }
+  }
+
+}

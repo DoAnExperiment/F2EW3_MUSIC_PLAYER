@@ -6,4 +6,4 @@ week3 - Music Player
 
 * [Photo by Ben White](https://unsplash.com/photos/iPyQg9QfepM)
 
-* [Demo](https://doanexperiment.github.io/F2EW3_Music_PLAYER/)
+* [Demo](https://doanexperiment.github.io/F2EW3_MUSIC_PLAYER/)

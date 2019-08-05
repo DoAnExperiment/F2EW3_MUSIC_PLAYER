@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .player .player-button, .player .toggle-button {
   width: 59.53px;
   height: 59.53px;
@@ -22,7 +23,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   background-color: #FF8C6E;
-  width: 100vw;
+  min-height: 100vh;
   padding: 0;
 }
 
@@ -49,6 +50,7 @@ body {
   border: 3px solid #000;
   background-color: white;
   margin-top: 28px;
+  margin-bottom: 14px;
   padding: 39px 44px 0 34px;
 }
 
@@ -115,7 +117,6 @@ body {
 
 .player .player-button {
   position: relative;
-  z-index: 2;
 }
 
 .player .player-button > img {
@@ -128,6 +129,19 @@ body {
 
 .player .player-button.random img {
   width: 80%;
+}
+
+.player .player-button::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  background-color: #C5C5C5;
+  border: 3px solid #000;
+  border-radius: 50%;
+  z-index: -1;
 }
 
 .player .infoAndVolume {
@@ -157,13 +171,13 @@ body {
 }
 
 .player .infoAndVolume .album-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.5;
 }
 
 .player .infoAndVolume .singer {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .player .infoAndVolume .group {
@@ -182,15 +196,49 @@ body {
 }
 
 .player .infoAndVolume input[type="range"] {
-  width: 163.51px;
-  height: 9px;
-  margin-right: 12.26px;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  overflow: hidden;
+  width: 163.51px;
+  height: 16px;
+  margin-right: 12.26px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.player .infoAndVolume input[type="range"]:focus {
   outline: none;
-  border: 3px solid #000;
-  border-radius: 75px;
+}
+
+.player .infoAndVolume input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #C5C5C5;
+}
+
+.player .infoAndVolume input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 0.8rem;
+  height: 16px;
+  background-color: white;
+  border: 3px solid rgba(34, 34, 34, 0.8);
+  border-radius: 2px;
+  -webkit-box-shadow: -100vw 0 0 100vw dodgerblue;
+          box-shadow: -100vw 0 0 100vw dodgerblue;
+  /* 注意 */
+}
+
+.player .needle {
+  position: absolute;
+  width: 297px;
+  height: 426px;
+  background-image: url(../images/needle_play.svg);
+  background-repeat: no-repeat;
+  background-size: 384px 450px;
+  top: 17.3rem;
+  left: 2rem;
+  background-color: transparent;
+  pointer-events: none;
 }
 
 .player .toggle-button {
@@ -205,21 +253,6 @@ body {
   left: 50%;
   -webkit-transform: translateX(-60%);
           transform: translateX(-60%);
-  z-index: 3;
-}
-
-.player .needle {
-  position: absolute;
-  width: 297px;
-  height: 426px;
-  background-image: url(../images/needle_play.svg);
-  background-repeat: no-repeat;
-  background-size: 384px 450px;
-  top: 17.3rem;
-  left: 2rem;
-  background-color: transparent;
-  pointer-events: none;
-  z-index: 2;
 }
 
 .player > .controls {
@@ -235,7 +268,7 @@ body {
 
 .player > .controls .progress {
   width: 538px;
-  height: 9px;
+  height: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -245,8 +278,8 @@ body {
 
 .player > .controls .progress-filled {
   position: relative;
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
+  -ms-flex-preferred-size: 0%;
+      flex-basis: 0%;
   background-color: #C5C5C5;
 }
 
@@ -261,6 +294,8 @@ body {
   right: -16px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  -webkit-transition: all .5s;
+  transition: all .5s;
   z-index: 10;
 }
 

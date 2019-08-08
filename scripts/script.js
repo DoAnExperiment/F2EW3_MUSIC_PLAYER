@@ -63,3 +63,7 @@ range.addEventListener('change',handleRangeUpdate);
 
 progress.addEventListener('click', scrub);
 audio.addEventListener('timeupdate', handleProgress);
+let mousedown = false;
+progress.addEventListener('mouseover', (e) => mousedown && scrub(e));
+progress.addEventListener('mousedown', () => mousedown = true);
+progress.addEventListener('mouseup', () => mousedown = false);

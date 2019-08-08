@@ -274,6 +274,8 @@ body {
   display: flex;
   border: 3px solid #000;
   border-radius: 75px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
 }
 
 .player > .controls .progress-filled {
@@ -291,11 +293,9 @@ body {
   border: 3px solid #000;
   border-radius: 2px;
   position: absolute;
-  right: -16px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  right: -20px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   z-index: 10;
 }
 
@@ -310,5 +310,5 @@ body {
 }
 
 .player > .controls .duration {
-  margin-left: 0.5em;
+  margin-left: 1em;
 }
